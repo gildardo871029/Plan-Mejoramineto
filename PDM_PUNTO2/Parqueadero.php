@@ -18,6 +18,7 @@ class Parqueadero extends Superficie implements Alquiler
 
     }
 
+
     public function getTipo()
     {
         return $this->tipo;
@@ -32,6 +33,30 @@ class Parqueadero extends Superficie implements Alquiler
     {
     }
 
+    public function muestra()
+    {
+        $infoObjeto=null;
+        $infoObjeto="<br><h4>"."Tipo Inmueble: ".get_class($this)."</h4>";
+        $infoObjeto=$infoObjeto."</br>"."Ubicado en :".$this->getUbicacion();
+        $infoObjeto=$infoObjeto."</br>"."Area ocupada :".$this->getArea();
+        $infoObjeto=$infoObjeto."</br>"."Publico/privado: ".$this->getTipo();
+        $infoObjeto=$infoObjeto."</br>"."Precio metro Cuadrado: ".$this->getPrecioM2();
+        $infoObjeto=$infoObjeto."</br>"."Valor Venta: ".$this->getPrecioM2();
+        return $infoObjeto;
+
+    }
+
+    public  function toString()
+    {
+        $string="";
+        $string=$string."Ubicacion: ".$this->getUbicacion().", ";
+        $string=$string."Area: ".$this->getArea().", ";
+        $string=$string."Tipo: ".$this->getTipo().", ";
+        $string=$string."PrecioM2: ".$this->getPrecioM2().", ";
+
+
+        return $string;
+    }
 
 
 }

@@ -16,7 +16,7 @@ abstract class Inmueble
         $this->ubicacion=$wUbicacion;
         $this->area=$wArea;
     }
-
+//getter y setter
     public function getArea()
     {
         return $this->area;
@@ -36,4 +36,30 @@ abstract class Inmueble
     {
         $this->ubicacion = $ubicacion;
     }
+//metodos
+
+    public  function precio(){
+        return "accion no definida";
+    }
+
+    public function muestra(){}
+    public function toString(){}
+
+    /**
+     * @param $inmueble
+     */
+    public function equals($inmueble ){
+        $iguales=false;
+        if((strcmp(get_class($this),get_class($inmueble))==0)){
+
+                if($this->toString()==$inmueble->toString()){
+                    $iguales=true;
+                }
+        }else{
+
+        }
+        return $iguales;
+    }
+
+
 }

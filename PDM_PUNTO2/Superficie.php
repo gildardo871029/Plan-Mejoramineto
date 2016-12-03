@@ -29,4 +29,11 @@ abstract class Superficie extends Inmueble
         $this->precioM2 = $precioM2;
     }
 
+    public function precio(){
+
+        $precioFinal=($this->getArea()*$this->precioM2);
+        return$precioFinal;
+
+    }
+
 }

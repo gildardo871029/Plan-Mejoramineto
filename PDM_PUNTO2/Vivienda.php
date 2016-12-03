@@ -14,14 +14,22 @@ class Vivienda extends Construccion implements Vender
     private $cantHabitaciones;
     private $Piso;
 
-    public function __construct($wUbicacion, $wArea, $wEstado,$wPrecio,$wCantHabitaciones,$wPiso)
+    /**
+     * Vivienda constructor.
+     * @param $wUbicacion string
+     * @param $wArea metros cuadrados
+     * @param $wEstado nueva-usada
+     * @param $wPrecio precio de la vivienda
+     * @param $wCantHabitaciones nro Habitaciones
+     * @param $wPiso ubicación
+     */
+    public function __construct($wUbicacion, $wArea, $wEstado, $wPrecio, $wCantHabitaciones, $wPiso)
     {
         parent::__construct($wUbicacion, $wArea, $wEstado);
         $this->cantHabitaciones=$wCantHabitaciones;
         $this->precio=$wPrecio;
         $this->Piso=$wPiso;
     }
-
     public function getCantHabitaciones()
     {
         return $this->cantHabitaciones;
@@ -55,4 +63,34 @@ class Vivienda extends Construccion implements Vender
     public function vender()
     {
     }
+    public function precio(){
+        return $this->precio;
+    }
+
+    /**
+     * @return string
+     */
+    public function muestra()
+    {
+        $infoObjeto=null;
+        $infoObjeto="<br><h4>Tipo Inmueble: ".get_class($this)."</h4>";
+        $infoObjeto=$infoObjeto."Ubicado en :".$this->getUbicacion();
+        $infoObjeto=$infoObjeto."<br>Piso; ".$this->getPiso();
+        $infoObjeto=$infoObjeto."</br>Nro Habitaciones: ".$this->getCantHabitaciones();
+        $infoObjeto=$infoObjeto."</br>Precio: $".$this->precio();
+        return $infoObjeto."</br>";
+    }
+
+    public  function toString()
+    {
+        $string="";
+        $string=$string."Ubicacion: ".$this->getUbicacion().", ";
+        $string=$string."Area: ".$this->getArea().", ";
+        $string=$string."Estado: ".$this->getEstado().", ";
+        $string=$string."Precio: ".$this->getPrecio().", ";
+        $string=$string."CantHabitaciones: ".$this->getCantHabitaciones().", ";
+        $string=$string."Piso: ".$this->getPiso();
+        return $string;
+    }
+
 }
