@@ -7,20 +7,22 @@
  * Time: 23:45
  */
 class Conexion
+
 {
 
     private static $dbName = 'PDM';
-    private static $dbHost = 'localHost';
+    private static $dbHost = 'localhost';
     private static $dbUsername = 'postgres';
     private static $dbUserPassword = '1234';
     private static $dbPort = '5432';
     private static $MyConnection = null;
 
 
-    public function __construct()
-
-    {
+    public function __construct() {
+        die("Error in the consult..");
     }
+
+
 
     public static function connect()
     {
@@ -53,7 +55,6 @@ class Conexion
             self::$instancia = new $miclase;
         }
         return self::$instancia;
-
     }
 
 

@@ -3,17 +3,17 @@
 /**
  * Created by PhpStorm.
  * User: usuario
- * Date: 03/12/2016
- * Time: 15:37
+ * Date: 04/12/2016
+ * Time: 11:49
  */
-
-include_once("../../SERVICES/Conexion.php");
+require_once("MODEL/DTO/DtoTrabajoCatgoria.php");
+require_once("SERVICES/Conexion.php");
 require_once("DaoInterface.php");
 
-class DaoEstadoPregunta implements DaoInterface
+class DaoTrabajoCatgoria implements DaoInterface
 {
-    private $conn;
 
+    private $conn;
     public function __construct()
     {
         $this->conn= Conexion::connect();
@@ -42,12 +42,13 @@ class DaoEstadoPregunta implements DaoInterface
 
     public function traerTodos()
     {
-        $query = "SELECT * FROM tbl_estadospregunta ORDER BY idestado";
+        $query = "SELECT * FROM tbl_trabajoscategoria ORDER BY idtrabajo";
         $resultado=$this->conn->query($query);
         $result=null;
         foreach($resultado->fetchAll(PDO::FETCH_OBJ) AS $row){
-            $newUser = new DtoEstadoPregunta($row->idestado,$row-> descripcion);
+            $newUser = new DtoTrabajoCatgoria($row->idtrabajo,$row->idcategoria,$row->descripcion);
             $result[] = $newUser;
+
         }
 
         return $result;
@@ -71,4 +72,5 @@ class DaoEstadoPregunta implements DaoInterface
     {
         // TODO: Implement eliminar() method.
     }
+
 }

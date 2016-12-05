@@ -13,10 +13,42 @@ class DtoTrabajoCatgoria
     private $descripcion;
     public function __construct($widTrabajo,$widCategoria,$wdescripcion)
     {
-        $this->idTrabajoC=$widTrabajo;
+        $this->idTrabajo=$widTrabajo;
         $this->idCategoria=$widCategoria;
         $this->descripcion=$wdescripcion;
 
     }
+
+    public function getDescripcion()
+    {
+        return $this->descripcion;
+    }
+
+    public function getIdCategoria()
+    {
+        return $this->idCategoria;
+    }
+
+    public function getIdTrabajo()
+    {
+        return $this->idTrabajo;
+    }
+
+
+    public function setDescripcion($descripcion)
+    {
+        $this->descripcion = $descripcion;
+    }
+
+    public function setIdCategoria($idCategoria)
+    {
+        $this->idCategoria = $idCategoria;
+    }
+
+    public function setIdTrabajo($idTrabajo)
+    {
+        $this->idTrabajo = $idTrabajo;
+    }
+
 
 }

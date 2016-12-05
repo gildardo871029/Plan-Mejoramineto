@@ -6,8 +6,7 @@
  * Date: 03/12/2016
  * Time: 13:57
  */
-class DtoPregunta
-{
+class DtoPregunta{
     private $idPregunta;
     private $pregunta;
     private $idTipoTrabajo;

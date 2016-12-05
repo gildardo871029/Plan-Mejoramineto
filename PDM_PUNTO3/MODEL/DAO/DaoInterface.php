@@ -8,11 +8,11 @@
  */
 interface DaoInterface
 {
-    public function crear();
-    public function actualizar();
+    public function crear($dto);
+    public function actualizar($dto);
     public function traerTodos();
-    public function traerPorId();
-    public function eliminar();
+    public function traerPorId($id);
+    public function eliminar($id);
 
 
 }

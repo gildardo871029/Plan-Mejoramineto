@@ -3,17 +3,16 @@
 /**
  * Created by PhpStorm.
  * User: usuario
- * Date: 03/12/2016
- * Time: 15:37
+ * Date: 04/12/2016
+ * Time: 7:15
  */
-
-include_once("../../SERVICES/Conexion.php");
+require_once("C:\\xampp\htdocs\PDM_PHP\PDM_PUNTO3\MODEL\DTO\DtoPregunta.php");
+require_once("C:\\xampp\htdocs\PDM_PHP\PDM_PUNTO3\SERVICES/Conexion.php");
 require_once("DaoInterface.php");
 
-class DaoEstadoPregunta implements DaoInterface
+class DaoPreguntas implements DaoInterface
 {
     private $conn;
-
     public function __construct()
     {
         $this->conn= Conexion::connect();
@@ -21,9 +20,21 @@ class DaoEstadoPregunta implements DaoInterface
 
     public function crear($dto)
     {
-        $query = "INSERT INTO tbl_preguntas( descripcion)VALUES ( ?)";
+        $query = "INSERT INTO tbl_preguntas(
+            idpregunta, pregunta, tipotrabajo, fechacreacion, fecharespuesta,
+            respuesta, estado, creador)
+    VALUES (?, ?, ?, ?, ?,
+            ?, ?, ?);
+";
         $stmt = $this->conn->prepare($query);
-        $stmt->bindparam(1, $dto->getDescripcion());
+        $stmt->bindparam(1,$dto->getPregunta());
+        $stmt->bindparam(2,$dto->getIdTipoTrabajo());
+        $stmt->bindparam(3,$dto->getCreador());
+        $stmt->bindparam(4,$dto->getCreador());
+        $stmt->bindparam(5,$dto->getCreador());
+        $stmt->bindparam(6,$dto->getCreador());
+        $stmt->bindparam(7,$dto->getCreador());
+
         return $stmt->execute();
         Conexion::disconnect();
     }
@@ -42,12 +53,13 @@ class DaoEstadoPregunta implements DaoInterface
 
     public function traerTodos()
     {
-        $query = "SELECT * FROM tbl_estadospregunta ORDER BY idestado";
+        $query = "SELECT * FROM view_preguntas ORDER BY estado";
         $resultado=$this->conn->query($query);
         $result=null;
         foreach($resultado->fetchAll(PDO::FETCH_OBJ) AS $row){
-            $newUser = new DtoEstadoPregunta($row->idestado,$row-> descripcion);
+            $newUser = new DtoPregunta($row->nro,$row->pregunta,$row->trabajo,$row->fechacreacion,$row->fecharespuesta,$row->respuesta,$row->estado,$row->creador);
             $result[] = $newUser;
+
         }
 
         return $result;
